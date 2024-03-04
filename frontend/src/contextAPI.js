@@ -8,14 +8,11 @@ function ProductProvider(props) {
     const [detailProduct, setDetailProduct] = useState([]);
     const [cart, setCart] = useState([]);
     const [cartSubTotal, setCartSubTotal] = useState(0);
-
     const optionDefault = { text: "Selecione uma categoria", value: 0 };
     const [productList, setProductList] = useState([]);
-
     const [page, setPage] = useState(1);
 
     useEffect(() => setProductList(products), [products]);
-
 
     var filter = (atribute, value) => {
         
@@ -70,12 +67,6 @@ function ProductProvider(props) {
         product.total = product.count * product.preco;
 
         setCart([...tempCart])
-
-        // this.setState(()=> {
-        //     return { cart : [...tempCart] }
-        // },()=> {
-        //     this.makeTotal();
-        // })
     }
 
     function decrement(id) {
@@ -84,18 +75,11 @@ function ProductProvider(props) {
         const index = tempCart.indexOf(selectedProduct);
         const product = tempCart[index];
         if (product.count >= 2) {
-
             product.count = product.count - 1;
             product.total = product.count * product.preco;
 
             setCart([...tempCart])
-
-            // this.setState(()=> {
-            //     return { cart : [...tempCart] }
-            // },()=> {
-            //     this.makeTotal();
-            // })
-            }
+        }
     }
 
     function removeItem(id) {
@@ -112,15 +96,6 @@ function ProductProvider(props) {
 
         setCart([...tempCart]);
         setProducts([...tempProduct]);
-        // // this.setState(()=> {
-        // //     return {
-        // //         cart: [...tempCart],
-        // //         product: [...tempProduct]
-        // //     }
-        // // }, ()=> {
-        // //     return this.makeTotal();
-        // // }
-        // )
     }
 
     useEffect(() => makeTotal(), [cart, products]);
@@ -154,4 +129,3 @@ function ProductProvider(props) {
 const ProductConsumer = ProductContext.Consumer;
 
 export {ProductProvider, ProductConsumer};
-

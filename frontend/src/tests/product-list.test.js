@@ -4,19 +4,15 @@ import { act } from "react-dom/test-utils";
 import axiosApi from "../services/api";
 import "@testing-library/jest-dom/extend-expect";
 import axios from "axios";
-
-
 import ProductList from "../components/ProductList";
 
 let container = null;
 beforeEach(() => {
-  // configurar o elemento do DOM como o alvo da renderização
   container = document.createElement("div");
   document.body.appendChild(container);
 });
 
 afterEach(() => {
-  // Limpar ao sair
   unmountComponentAtNode(container);
   container.remove();
   container = null;
@@ -80,14 +76,8 @@ describe('fetch Produtos disponíveis', () => {
           }
         ]
       };
-      
 
       axios.get.mockImplementationOnce(() => Promise.resolve(fakeProdutos));
       await expect(axiosApi.getProducts(`/produtos?tipo=1`)).resolves.toEqual(fakeProdutos);
     });
   });
-
-
-
-
-

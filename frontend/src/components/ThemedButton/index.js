@@ -12,11 +12,11 @@ const themes = {
   },
 };
 
-class ThemedButton extends React.Component {  // Provider component implementation of Context.Provider
+class ThemedButton extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { // Define initial state
+    this.state = {
       theme: themes.light,
       toggleTheme: this.toggleTheme,
     }
